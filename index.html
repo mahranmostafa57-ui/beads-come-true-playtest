@@ -2,51 +2,100 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>拼豆成真</title>
   <meta
     name="viewport"
-    content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui=true"
-  />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="renderer" content="webkit">
-  <meta name="force-rendering" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="msapplication-tap-highlight" content="no">
-  <meta name="full-screen" content="yes">
-  <meta name="x5-fullscreen" content="true">
-  <meta name="360-fullscreen" content="true">
-  <meta name="x5-page-mode" content="app">
-  <link rel="stylesheet" type="text/css" href="style.css">
+    content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1"
+  >
+  <title>拼豆成真</title>
+  <script>
+    (function routeMobileGame() {
+      var mobileUserAgent =
+        /Android|iPhone|iPad|iPod|Mobile|HarmonyOS/i.test(navigator.userAgent);
+      var touchTablet =
+        navigator.maxTouchPoints > 1 &&
+        Math.min(window.screen.width, window.screen.height) < 1024;
+      if (mobileUserAgent || touchTablet) {
+        window.location.replace('game.html' + window.location.search + window.location.hash);
+      }
+    }());
+  </script>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #332c28;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #game-shell {
+      position: relative;
+      flex: none;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #fff8ea;
+      box-shadow: 0 0 48px rgba(0, 0, 0, 0.28);
+    }
+
+    #game-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
 </head>
 <body>
-  <div id="GameDiv" cc_exact_fit_screen="true">
-    <div id="Cocos3dGameContainer">
-      <canvas
-        id="GameCanvas"
-        oncontextmenu="event.preventDefault()"
-        tabindex="99"
-      ></canvas>
-    </div>
+  <div id="game-shell">
+    <iframe
+      id="game-frame"
+      src="game.html"
+      title="拼豆成真游戏"
+      allow="autoplay; clipboard-write"
+    ></iframe>
   </div>
-  
+  <script>
+    (function fitGame() {
+      var designWidth = 750;
+      var designHeight = 1334;
+      var shell = document.getElementById('game-shell');
+      var frame = document.getElementById('game-frame');
 
-<!-- Polyfills bundle. -->
+      function resize() {
+        var desktopLandscape =
+          window.innerWidth >= 768 && window.innerWidth > window.innerHeight;
+        if (!desktopLandscape) {
+          shell.style.width = window.innerWidth + 'px';
+          shell.style.height = window.innerHeight + 'px';
+          frame.style.width = window.innerWidth + 'px';
+          frame.style.height = window.innerHeight + 'px';
+          return;
+        }
 
-<script src="src/polyfills.bundle.js" charset="utf-8"> </script>
+        var scale = Math.min(
+          window.innerWidth / designWidth,
+          window.innerHeight / designHeight
+        );
+        var width = Math.floor(designWidth * scale);
+        var height = Math.floor(designHeight * scale);
+        shell.style.width = width + 'px';
+        shell.style.height = height + 'px';
+        frame.style.width = width + 'px';
+        frame.style.height = height + 'px';
+      }
 
-
-<!-- SystemJS support. -->
-<script src="src/system.bundle.js" charset="utf-8"> </script>
-
-<!-- Import map -->
-<script src="src/import-map.json" type="systemjs-importmap" charset="utf-8"> </script>
-
-<script>
-    System.import('./index.js').catch(function(err) { console.error(err); })
-</script>
-
+      window.addEventListener('resize', resize);
+      resize();
+    }());
+  </script>
 </body>
 </html>

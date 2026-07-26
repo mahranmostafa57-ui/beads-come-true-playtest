@@ -7,6 +7,18 @@
     content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1"
   >
   <title>拼豆成真</title>
+  <script>
+    (function routeMobileGame() {
+      var mobileUserAgent =
+        /Android|iPhone|iPad|iPod|Mobile|HarmonyOS/i.test(navigator.userAgent);
+      var touchTablet =
+        navigator.maxTouchPoints > 1 &&
+        Math.min(window.screen.width, window.screen.height) < 1024;
+      if (mobileUserAgent || touchTablet) {
+        window.location.replace('game.html' + window.location.search + window.location.hash);
+      }
+    }());
+  </script>
   <style>
     html,
     body {
