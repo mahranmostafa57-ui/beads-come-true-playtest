@@ -20,8 +20,43 @@
   <meta name="360-fullscreen" content="true">
   <meta name="x5-page-mode" content="app">
   <link rel="stylesheet" type="text/css" href="style.c73d8.css">
+  <style>
+    html,
+    body {
+      background: #fff8ea;
+    }
+
+    #bct-boot-loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5b4034;
+      background: #fff8ea;
+      font: 600 34px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      letter-spacing: 2px;
+      z-index: 0;
+    }
+
+    #bct-boot-loader span {
+      display: block;
+      color: #8b7a6e;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    #GameDiv {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 </head>
 <body>
+  <div id="bct-boot-loader" aria-hidden="true">
+    <div>拼豆成真<span>加载中…</span></div>
+  </div>
   <div id="GameDiv" cc_exact_fit_screen="true">
     <div id="Cocos3dGameContainer">
       <canvas
