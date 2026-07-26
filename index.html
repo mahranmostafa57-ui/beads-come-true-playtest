@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1"
+  >
+  <title>拼豆成真</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #332c28;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #game-shell {
+      position: relative;
+      flex: none;
+      overflow: hidden;
+      background: #fff8ea;
+      box-shadow: 0 0 48px rgba(0, 0, 0, 0.28);
+    }
+
+    #game-frame {
+      position: absolute;
+      inset: 0;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-shell">
+    <iframe
+      id="game-frame"
+      src="game.html"
+      title="拼豆成真游戏"
+      allow="autoplay; clipboard-write"
+    ></iframe>
+  </div>
+  <script>
+    (function fitGame() {
+      var designWidth = 750;
+      var designHeight = 1334;
+      var shell = document.getElementById('game-shell');
+      var frame = document.getElementById('game-frame');
+
+      function resize() {
+        var desktopLandscape =
+          window.innerWidth >= 768 && window.innerWidth > window.innerHeight;
+        if (!desktopLandscape) {
+          shell.style.width = window.innerWidth + 'px';
+          shell.style.height = window.innerHeight + 'px';
+          frame.style.width = window.innerWidth + 'px';
+          frame.style.height = window.innerHeight + 'px';
+          return;
+        }
+
+        var scale = Math.min(
+          window.innerWidth / designWidth,
+          window.innerHeight / designHeight
+        );
+        var width = Math.floor(designWidth * scale);
+        var height = Math.floor(designHeight * scale);
+        shell.style.width = width + 'px';
+        shell.style.height = height + 'px';
+        frame.style.width = width + 'px';
+        frame.style.height = height + 'px';
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+    }());
+  </script>
+</body>
+</html>
