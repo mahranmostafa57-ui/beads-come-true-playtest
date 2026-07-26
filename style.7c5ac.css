@@ -1,5 +1,7 @@
 html {
   -ms-touch-action: none;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 
 body,
@@ -12,6 +14,9 @@ div {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-user-drag: none;
 }
 
 input::-webkit-outer-spin-button,
@@ -41,6 +46,8 @@ body {
 
 canvas {
   background-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  inset: 0;
 }
 
 #GameDiv,
