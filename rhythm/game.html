@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>拼豆成真</title>
+  <meta
+    name="viewport"
+    content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui=true,viewport-fit=cover"
+  />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes">
+  <meta name="x5-fullscreen" content="true">
+  <meta name="360-fullscreen" content="true">
+  <meta name="x5-page-mode" content="app">
+  <link rel="stylesheet" type="text/css" href="style.7c5ac.css">
+  <script>
+    document.addEventListener('touchmove', function (event) {
+      event.preventDefault();
+    }, { passive: false });
+  </script>
+  <style>
+    html,
+    body {
+      background: #fff8ea;
+    }
+
+    #bct-boot-loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5b4034;
+      background: #fff8ea;
+      font: 600 34px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      letter-spacing: 2px;
+      z-index: 0;
+    }
+
+    #bct-boot-loader span {
+      display: block;
+      color: #8b7a6e;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    #GameDiv {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="bct-boot-loader" aria-hidden="true">
+    <div>拼豆成真<span>加载中…</span></div>
+  </div>
+  <div id="GameDiv" cc_exact_fit_screen="true">
+    <div id="Cocos3dGameContainer">
+      <canvas
+        id="GameCanvas"
+        oncontextmenu="event.preventDefault()"
+        tabindex="99"
+      ></canvas>
+    </div>
+  </div>
+  
+
+<!-- Polyfills bundle. -->
+
+<script src="src/polyfills.bundle.5adbf.js" charset="utf-8"> </script>
+
+
+<!-- SystemJS support. -->
+<script src="src/system.bundle.543e6.js" charset="utf-8"> </script>
+
+<!-- Import map -->
+<script src="src/import-map.cf99a.json" type="systemjs-importmap" charset="utf-8"> </script>
+
+<script>
+    System.import('./index.6c56b.js').catch(function(err) { console.error(err); })
+</script>
+
+</body>
+</html>
